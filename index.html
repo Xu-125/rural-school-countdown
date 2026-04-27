@@ -61,8 +61,30 @@
  }
  .hero-img{
  position:absolute;inset:0;z-index:0;
- background:linear-gradient(180deg, rgba(13,21,16,.20) 0%, rgba(13,21,16,.72) 100%),
- url('https://loremflickr.com/1400/900/rural,school,children?lock=101') center/cover no-repeat;
+ background:
+ /* 远山 */
+ linear-gradient(180deg, 
+ rgba(18,40,30,.85) 0%, 
+ rgba(25,50,35,.7) 25%, 
+ rgba(40,65,45,.6) 45%, 
+ rgba(60,85,55,.5) 60%, 
+ rgba(80,100,65,.45) 72%, 
+ rgba(100,115,75,.4) 82%, 
+ rgba(120,130,85,.5) 100%),
+ /* 雾气层 */
+ radial-gradient(ellipse 120% 60% at 30% 70%, rgba(180,195,160,.18), transparent),
+ radial-gradient(ellipse 80% 40% at 70% 65%, rgba(160,175,140,.12), transparent),
+ /* 山体轮廓 */
+ conic-gradient(from 200deg at 50% 85%, 
+ rgba(40,60,40,.6) 0deg, rgba(60,80,50,.4) 30deg, 
+ rgba(80,100,60,.3) 60deg, rgba(100,115,70,.25) 90deg,
+ rgba(80,100,60,.3) 120deg, rgba(60,80,50,.4) 150deg, 
+ rgba(40,60,40,.6) 180deg, rgba(30,50,35,.5) 210deg,
+ rgba(40,60,40,.6) 240deg, rgba(60,80,50,.4) 270deg,
+ rgba(80,100,60,.3) 300deg, rgba(100,115,70,.25) 330deg,
+ rgba(80,100,60,.3) 360deg),
+ /* 基础底色 */
+ linear-gradient(135deg, #2a4a35 0%, #3a5a45 30%, #4a6a50 60%, #6a8a68 100%);
  }
  .hero::after{
  content:"";position:absolute;inset:0;z-index:1;
@@ -161,28 +183,103 @@
 
  /* 封面 */
  .cover{position:relative;min-height:44vh;padding:72px 18px 30px;display:flex;align-items:flex-end;color:#f5f6ef;overflow:hidden;}
- .cover::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center, transparent 35%, rgba(0,0,0,.18) 100%);pointer-events:none;}
+ .cover::before{
+ content:"";position:absolute;bottom:0;left:0;right:0;height:45%;z-index:1;
+ clip-path:polygon(0% 55%, 5% 40%, 12% 52%, 20% 28%, 28% 48%, 35% 22%, 42% 42%, 50% 15%, 58% 38%, 65% 10%, 72% 32%, 80% 20%, 88% 42%, 95% 28%, 100% 35%, 100% 100%, 0% 100%);
+ opacity:.3;pointer-events:none;
+ }
+ .cover::after{
+ content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+ background:
+ /* 远景山峰 */
+ linear-gradient(0deg, rgba(20,30,22,.5) 0%, transparent 50%),
+ radial-gradient(circle at center, transparent 35%, rgba(0,0,0,.18) 100%);
+ }
+ .cover .mountain-fg{
+ position:absolute;bottom:0;left:0;right:0;height:28%;z-index:1;
+ clip-path:polygon(0% 70%, 10% 55%, 20% 65%, 30% 40%, 40% 58%, 50% 35%, 60% 52%, 70% 30%, 80% 50%, 90% 38%, 100% 55%, 100% 100%, 0% 100%);
+ opacity:.25;pointer-events:none;
+ }
+ .cover.shaanxi::before{background:rgba(140,120,65,.8)}
+ .cover.shaanxi .mountain-fg{background:rgba(160,140,75,.7)}
+ .cover.hunan::before{background:rgba(80,120,85,.7)}
+ .cover.hunan .mountain-fg{background:rgba(100,140,105,.6)}
+ .cover.voices::before{background:rgba(100,80,40,.6)}
+ .cover.voices .mountain-fg{background:rgba(120,95,50,.5)}
+ .cover.scholars::before{background:rgba(90,70,35,.6)}
+ .cover.scholars .mountain-fg{background:rgba(110,85,45,.5)}
+ .cover.ending::before{background:rgba(160,140,70,.7)}
+ .cover.ending .mountain-fg{background:rgba(181,157,90,.6)}
  .cover>*{position:relative;z-index:2;}
 
  .cover.shaanxi{
- background:linear-gradient(180deg, rgba(10,18,14,.28) 0%, rgba(10,18,14,.78) 100%),
- url('https://loremflickr.com/1400/900/mountain,village,rural?lock=102') center/cover no-repeat;
+ /* 黄土高原 · 层峦叠嶂 */
+ background:
+ radial-gradient(ellipse 90% 50% at 50% 70%, rgba(140,120,70,.25), transparent),
+ radial-gradient(ellipse 60% 30% at 20% 80%, rgba(160,130,60,.2), transparent),
+ radial-gradient(ellipse 50% 25% at 80% 75%, rgba(130,110,65,.18), transparent),
+ linear-gradient(180deg, 
+ rgba(10,18,14,.28) 0%, 
+ rgba(30,35,25,.45) 30%,
+ rgba(60,55,35,.55) 50%, 
+ rgba(90,75,40,.50) 65%, 
+ rgba(120,100,55,.45) 80%, 
+ rgba(140,120,65,.50) 100%);
  }
  .cover.hunan{
- background:linear-gradient(180deg, rgba(10,18,14,.28) 0%, rgba(10,18,14,.78) 100%),
- url('https://loremflickr.com/1400/900/misty,mountains,village?lock=103') center/cover no-repeat;
+ /* 湘西山间 · 云雾缭绕 */
+ background:
+ radial-gradient(ellipse 100% 55% at 50% 65%, rgba(60,90,70,.2), transparent),
+ radial-gradient(ellipse 70% 35% at 30% 70%, rgba(80,110,85,.15), transparent),
+ radial-gradient(ellipse 60% 30% at 70% 60%, rgba(100,130,100,.12), transparent),
+ linear-gradient(180deg, 
+ rgba(10,18,14,.28) 0%, 
+ rgba(25,45,35,.50) 30%,
+ rgba(40,65,50,.55) 50%, 
+ rgba(55,80,60,.50) 65%, 
+ rgba(70,95,70,.45) 80%, 
+ rgba(90,115,85,.50) 100%);
  }
  .cover.voices{
- background:linear-gradient(180deg, rgba(10,18,14,.30) 0%, rgba(10,18,14,.82) 100%),
- url('https://loremflickr.com/1400/900/classroom,children,education?lock=104') center/cover no-repeat;
+ /* 教室窗棂 · 温暖午后 */
+ background:
+ radial-gradient(ellipse 50% 60% at 55% 40%, rgba(200,180,120,.15), transparent),
+ radial-gradient(ellipse 40% 40% at 30% 60%, rgba(180,160,100,.12), transparent),
+ linear-gradient(180deg, 
+ rgba(10,18,14,.30) 0%, 
+ rgba(35,30,20,.50) 30%,
+ rgba(55,45,30,.55) 50%, 
+ rgba(75,60,35,.50) 65%, 
+ rgba(95,75,40,.45) 80%, 
+ rgba(110,90,50,.50) 100%);
  }
  .cover.scholars{
- background:linear-gradient(180deg, rgba(10,18,14,.30) 0%, rgba(10,18,14,.82) 100%),
- url('https://loremflickr.com/1400/900/library,books,study?lock=105') center/cover no-repeat;
+ /* 书香墨韵 · 沉稳厚重 */
+ background:
+ radial-gradient(ellipse 60% 50% at 50% 50%, rgba(100,80,50,.15), transparent),
+ radial-gradient(ellipse 40% 40% at 25% 70%, rgba(80,65,40,.12), transparent),
+ linear-gradient(180deg, 
+ rgba(10,18,14,.30) 0%, 
+ rgba(30,25,18,.50) 30%,
+ rgba(50,40,28,.55) 50%, 
+ rgba(70,55,38,.50) 65%, 
+ rgba(90,70,48,.45) 80%, 
+ rgba(105,85,55,.50) 100%);
  }
  .cover.ending{
- background:linear-gradient(180deg, rgba(10,18,14,.30) 0%, rgba(10,18,14,.82) 100%),
- url('https://loremflickr.com/1400/900/sunset,field,village?lock=106') center/cover no-repeat;
+ /* 暮色田野 · 余晖渐远 */
+ background:
+ radial-gradient(ellipse 80% 50% at 50% 75%, rgba(181,157,90,.2), transparent),
+ radial-gradient(ellipse 50% 35% at 30% 80%, rgba(160,130,70,.15), transparent),
+ radial-gradient(ellipse 40% 30% at 70% 70%, rgba(140,110,60,.12), transparent),
+ linear-gradient(180deg, 
+ rgba(10,18,14,.30) 0%, 
+ rgba(25,30,20,.45) 25%,
+ rgba(50,55,35,.55) 45%, 
+ rgba(80,85,50,.55) 60%, 
+ rgba(120,115,65,.50) 75%, 
+ rgba(160,145,80,.50) 90%, 
+ rgba(181,157,90,.55) 100%);
  }
 
  .cover .place{font-size:10px;color:var(--gold);letter-spacing:3px;font-family:var(--font-cn-sans);margin-bottom:10px;}
@@ -390,6 +487,7 @@
  <div class="divider"><span>· · ·</span></div>
 
  <section class="cover shaanxi">
+ <div class="mountain-fg"></div>
  <div>
  <div class="place reveal-left">陕西 · SHAANXI</div>
  <h2 class="reveal-left">一代人的求学迁徙</h2>
@@ -417,6 +515,7 @@
  </section>
 
  <section class="cover hunan">
+ <div class="mountain-fg"></div>
  <div>
  <div class="place reveal-left">湖南 · HUNAN</div>
  <h2 class="reveal-left">群山褶皱里，告别最后一学期</h2>
@@ -446,6 +545,7 @@
  </section>
 
  <section class="cover voices" id="voices">
+ <div class="mountain-fg"></div>
  <div>
  <div class="place reveal-left">CHAPTER 02 · VOICES</div>
  <h2 class="reveal-left">还有更多声音</h2>
@@ -458,6 +558,7 @@
  </section>
 
  <section class="cover scholars" id="scholars">
+ <div class="mountain-fg"></div>
  <div>
  <div class="place reveal-left">CHAPTER 03 · 学者视角</div>
  <h2 class="reveal-left">不只是"撤"或"留"</h2>
@@ -492,6 +593,7 @@
  </section>
 
  <section class="cover ending">
+ <div class="mountain-fg"></div>
  <div>
  <div class="place reveal-left">ENDING</div>
  <h2 class="reveal-left">村庄可以老去，但孩子的未来，必须有路可走</h2>
